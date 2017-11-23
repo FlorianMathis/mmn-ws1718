@@ -1,0 +1,56 @@
+#dyn { display: inline;
+  color: #4286f4;
+  font-weight: bold;
+}
+#help { display: inline;
+  color: #ffaa00;
+  font-weight: bold;
+}
+#warning { display: inline;
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 20px;
+
+}
+.center {
+    margin: auto;
+    margin-top: 50px;
+    padding: 50px;
+    width: 70%;
+    border: 2px solid #aaa;
+
+    -webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+}
+
+button{
+  width: 19%;
+  margin: auto;
+
+  border: 2px solid #000;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+
+}
+#head{
+  color: white;
+  font-family: 'Helvetica Neue',
+   sans-serif;
+   font-size: 70px;
+   font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+     text-align: left;
+     width: 100%;
+     background-color: rgba(66, 134, 244, 1);
+     -webkit-box-shadow: 0px 0px 33px 20px rgba(189,192,255,1);
+     -moz-box-shadow: 0px 0px 33px 20px rgba(189,192,255,1);
+     box-shadow: 0px 0px 33px 20px rgba(189,192,255,1);    padding: 10px;
+
+}
+
+input[type="password"] {
+  font:small-caption;
+  font-size:32px;
+  color: #4286f4}
