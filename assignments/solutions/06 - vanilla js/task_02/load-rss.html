@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RSS Ticker</title>
+    <link rel="stylesheet" href="load-rss.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+          // handle time refresh start
+            var timeButton = document.querySelector('.playButton');
+            timeButton.addEventListener('click',handletime);
+            var refresh = null;
+            function handletime(){
+              if(timeButton.innerHTML == logoPlay){
+                timeButton.innerHTML = logoStop;
+                refresh = setInterval(getnews,2000);
+              } else {
+                timeButton.innerHTML = logoPlay;
+                clearInterval(refresh);
+              }
+            }
+          // handle time refresh stop
+            var logoPlay = '►';
+            var logoStop = '■';
+
+            // 'http://feeds.gawker.com/lifehacker/full', not working anymore
+            var popularFeeds = [
+                'https://www.technologyreview.com/stories.rss',
+                'http://feeds.feedburner.com/Techcrunch/europe',
+                'http://feeds.feedburner.com/HowToGeek'
+            ];
+            // YOUR
+            // CODE
+            // GOES
+            // HERE
+            //a)
+            var playButton = document.querySelector('#content > div > button');
+            playButton.addEventListener('click',getnews);
+            function getnews(){
+              var randomURL = popularFeeds[Math.floor(Math.random()*popularFeeds.length)];
+              var proxy = "http://localhost/mmn/solutions/sheet_06/task_02/xml-proxy.php?url=";
+              //b)
+              var url = proxy+randomURL;
+              var params;
+              postJSON(url,  function(erg) {
+                //d) handle the response and show the articles
+                var content = document.getElementById('content');
+                content.innerHTML="";
+                erg.channel.item.forEach(function(e){
+                  var news = document.createElement('div');
+                  var headline = document.createElement('h2');
+                  var content = document.createElement('p');
+                  var readmore = document.createElement('a');
+                  var linkText = document.createTextNode("read more...");
+                  readmore.appendChild(linkText);
+                  readmore.title="read more...";
+                  readmore.href=e.link;
+                  news.innerHTML = "<h2>"+e.title+"</h2>"+"<p>"+e.description+"</p>";
+                  document.querySelector('#content').appendChild(news).appendChild(readmore);
+                })
+              }
+            , params)
+          };
+            //c)
+            function postJSON(url, callback, params) {
+          	 var req = new XMLHttpRequest();
+             req.open('POST', url);
+             req.setRequestHeader('Content-type','application');
+             req.onreadystatechange = function(){
+               if(req.readyState === 4){
+                 callback(JSON.parse(req.responseText));
+               }
+             };
+             req.send(params);
+           }
+        });
+
+    </script>
+
+</head>
+<body>
+<header>
+    <span class="appName">RSS Ticker</span>
+    <div class="currentSource"></div>
+    <button class="playButton">►</button>
+</header>
+
+<div id="content">
+   <div class="progress">
+        <button class="playButton">►</button>
+    </div>
+</div>
+</body>
+</html>
