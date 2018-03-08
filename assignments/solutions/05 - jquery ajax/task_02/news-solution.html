@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify Breakout</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <link rel="stylesheet" href="news.css">
+  <script>
+  // api-key: 655826e5e1894c06a67bd781e318b5d9
+    $(document).ready(function() {
+      const searchURL = 'https://newsapi.org/v1/sources?language=en'
+      const result = $('#result');
+      const key = "655826e5e1894c06a67bd781e318b5d9";
+      $.get({
+        type: 'get',
+        url: searchURL,
+        data: {
+          apiKey: key
+                },
+        dataType: 'json',
+        success: function(data) {
+
+		data.sources.forEach(function(obj){
+		var imgEL = $('<img>');
+    // news-logo due to copyright not available
+    // solution: work with the alt-attribute for the images (i just ignored the images here)
+    // or  set the click on each of the News-Headline Texts
+		var titleEL = $('<h2>');
+		var listItem = $('<li>');
+		listItem.attr('id', obj.id);
+
+		titleEL.text(obj.name);
+		//add things together
+		listItem.append(titleEL);
+		//console.log(obj.name);
+		$('#list').append(listItem);
+		});
+		 $("#list li").click(function() {
+		 $('#result').empty();
+		 var searchURL = "https://newsapi.org/v1/articles";
+		 console.log(this.id);
+		 //console.log("hi!");
+		 $.get({
+			type: 'get',
+			url: searchURL,
+			data: {
+			source: this.id,
+			  apiKey: key
+					},
+			dataType: 'json',
+			success: function(data) {
+
+		data.articles.forEach(function(obj){
+							 console.log(obj.description);
+
+		//console.log(obj.articles);
+		var divEL = $('<div>');
+		var titleEL = $('<h2>');
+		var authorEL = $('<h3>');
+		var imgEL = $('<img>');
+		var contentEL = $('<p>');
+		var linkEL = $('<a>');
+		linkEL.attr("href",obj.url);
+		linkEL.text("read more ...");
+		divEL.attr("id","card");
+		contentEL.text(obj.description);
+		authorEL.text(obj.author);
+		titleEL.text(obj.title);obj.urlToImage
+		imgEL.attr("src",obj.urlToImage && obj.urlToImage.length ? obj.urlToImage : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1024px-No_image_3x4.svg.png');
+		imgEL.width(400);
+		//imgEL.height(200);
+		divEL.append(titleEL);
+		divEL.append(authorEL);
+		divEL.append(imgEL);
+		divEL.append(contentEL);
+		divEL.append(linkEL);
+		$('#result').append(divEL);
+
+		});
+
+        },
+        error: function(e) {
+          console.error(e);
+        }
+      });
+
+
+
+
+});
+
+        },
+        error: function(e) {
+          console.error(e);
+        }
+      });
+
+
+});
+  </script>
+</head>
+<body>
+<div id="wrap">
+<div id="header">
+<h2>News ****BREAKING****</h2>
+</div>
+<div id="main">
+<div id="sidebar">
+<ul id="list"></ul>
+</div>
+
+<div id="content">
+<div id="result">
+</div>
+</div>
+</div>
+<div id="footer">
+</div>
+
+</div>
+  <!-- this will contain the results from the spotify search.-->
+</body>
+</html>

@@ -1,0 +1,48 @@
+body {
+  margin: 20px 2%;
+  padding: 0px;
+}
+#links {
+  float: left;
+  width: 20%;
+  height: 300px;
+}
+#rechts {
+  float: right;
+  width: 20%;
+  height: 300px;
+}
+#previous{
+  margin-top: 250px;
+  float: left;
+  margin-right: 20px;
+}
+
+#next{
+  float: right;
+  margin-top: 250px;
+  margin-right: 20px;
+}
+#bild {
+  float: left;
+}
+p{
+  position:absolute;
+}
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #333333;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.button:hover  {
+  background-color: #f4511e;
+}

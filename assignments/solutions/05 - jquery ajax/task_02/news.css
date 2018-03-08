@@ -1,0 +1,55 @@
+* {
+margin:0;
+padding:0;
+}
+
+body{
+background-color: #eee;
+}
+ 
+#wrap {
+margin-left:5%;
+margin-right:5%;
+}
+ 
+#sidebar {
+width:16em;
+float:left;
+background: rgba(66, 176, 255, 0.9);
+
+}
+ 
+#content {
+margin-top: 4em;
+margin-left:24em;
+margin-right: 24em;
+}
+ 
+#footer {
+clear:left;
+}
+ul {
+  list-style-type: none;
+}
+#card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+	padding: 5px;
+	background-color: white;
+	margin: 10px;
+}
+
+#card:hover { 
+    background-color: rgba(150, 150, 150, 0.5);
+}
+
+#header {
+    background: rgba(66, 176, 255, 0.9);
+    width: 100%; 
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-bottom:1px solid #666;
+    border-top:1px solid #666;
+}

@@ -1,0 +1,4 @@
+a) Die Verwendung eines API-Keys, erlaubt es, den Zugriff auf Daten (sprich die Verwendung der API) eindeutig auf eine Person/Institution zurückzuführen, und verhindert somit unerlaubte/anonyme Zugriffe.
+   Ein API-Key ist somit einzigartig (in der Regel), und an jeden Account gebunden.
+b) easy access to data of other software (for instance spotify), a lot of 3rd party tools (because it makes fun to use such an api ;), control the expiration (for instance: key is valid for 1 month)
+c) if the api changes, you have to refactor your code (like spotify v1 -> v2), tell the others what you are going to do (register your app, need an api-key because ..), if a 3rd person gets your api key, he/she can do get some requests with your identity
